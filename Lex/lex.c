@@ -18,58 +18,74 @@ int DFA(char *ch,char (*id)[100],int (*num)[100]){
                 i++;
             }
             i++;
-            printf("<id,%d>",j+1);
+            printf("<id,%d>\n",j+1);
             //puts(id[j]);
             //printf("%c",id[0][2]);
             j++;
         }
-        if(ch[i]>47&&ch[i]<58){
+        else if(ch[i]>47&&ch[i]<58){
             p=0;
-            num[k][p]=ch[i];
+            num[k][p]=ch[i]-48;
             while(ch[i+1]>47&&ch[i+1]<58){
-                num[k][p+1]=ch[i+1];
+                num[k][p+1]=ch[i+1]-48;
                 p++;
                 i++;
             }
-            printf("<num,%d>",k+1);
+            printf("<num,%d>\n",k+1);
             i++;
             k++;
         }
-        if(ch[i]==92){
-            printf("<xie>");
+        else if(ch[i]==92){
+            if(ch[i+1]=='s'){
+                printf("<sum>\n");
+                i=i+4;
+            }
+            else if(ch[i+1]=='i'){
+                printf("<int>\n");
+                i=i+4;
+            }
+            else{
+                printf("xie error");
+                exit(1);
+            }
+            //printf("<xie>\n");
+            //i++;
+        }
+        else if(ch[i]=='('){
+            printf("<(>\n");
             i++;
         }
-        if(ch[i]=='('){
-            printf("<(>");
+        else if(ch[i]==')'){
+            printf("<)>\n");
             i++;
         }
-        if(ch[i]==')'){
-            printf("<)>");
+        else if(ch[i]=='{'){
+            printf("<{>\n");
             i++;
         }
-        if(ch[i]=='{'){
-            printf("<{>");
+        else if(ch[i]=='}'){
+            printf("<}>\n");
             i++;
         }
-        if(ch[i]=='}'){
-            printf("<}>");
+        else if(ch[i]=='_'){
+            printf("<_>\n");
             i++;
         }
-        if(ch[i]=='_'){
-            printf("<_>");
+        else if(ch[i]=='^'){
+            printf("<^>\n");
             i++;
         }
-        if(ch[i]=='^'){
-            printf("<^>");
+        else if(ch[i]==' '){
+            printf("<blank>\n");
             i++;
         }
-        if(ch[i]==' '){
-            printf("< >");
-            i++;
+        else{
+            printf("none error");
+            exit(1);
         }
 
     }
-    return(1);
+    return(j);
 }
 
  
@@ -108,7 +124,22 @@ int DFA(char *ch,char (*id)[100],int (*num)[100]){
      
      
      x=DFA(ch,id,num);
-     puts(id[1]);
+     for(i=0;i<x;i++){
+         puts(id[i]);
+     }
+     i=0;
+     x=0;
+     while(num[i][0]!=0){
+         while(num[i][x]!=0){
+
+         printf("%d",num[i][x]);
+         x++;
+         }
+         printf("\n");
+         i++;
+     }
+
+
      return(1);
  
  
