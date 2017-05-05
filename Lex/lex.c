@@ -79,10 +79,10 @@ int DFA(char *ch,char (*id)[100],int (*num)[100]){
             printf("<blank>\n");
             i++;
         }
-        else{
+        /*else{
             printf("none error");
             exit(1);
-        }
+        }*/
 
     }
     return(j);
@@ -136,9 +136,10 @@ int DFA(char *ch,char (*id)[100],int (*num)[100]){
          x++;
          }
          printf("\n");
+         x=0;
          i++;
      }
-
+     //printf("%d",num[1][0]);
 
      return(1);
  
