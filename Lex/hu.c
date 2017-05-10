@@ -49,3 +49,7 @@ int main(){
 	while(!empty(stack))
 		printf("%d\n",pop_stack(stack) );
 }
+
+
+
+/*https://ewind.us/2015/typesetting-on-webpage/#语法分析-1*/
